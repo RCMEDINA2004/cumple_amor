@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html class="h-full" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <meta name="description" content="Una experiencia romántica e interactiva de cumpleaños para el amor de mi vida" />
+  <title>Feliz cumpleaños mi amor hermoso ❤️</title>
+
+  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-Serif) -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Material Symbols Outlined -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f9f9ff",
+            "surface-dim": "#cfdaf2",
+            "surface-bright": "#f9f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f0f3ff",
+            "surface-container": "#e7eeff",
+            "surface-container-high": "#dee8ff",
+            "surface-container-highest": "#d8e3fb",
+            "on-surface": "#111c2d",
+            "on-surface-variant": "#5c3f40",
+            "inverse-surface": "#263143",
+            "inverse-on-surface": "#ecf1ff",
+            "outline": "#906f70",
+            "outline-variant": "#e5bdbe",
+            "surface-tint": "#be0037",
+            "primary": "#b80035",
+            "on-primary": "#ffffff",
+            "primary-container": "#e11d48",
+            "on-primary-container": "#fffaf9",
+            "inverse-primary": "#ffb3b6",
+            "secondary": "#765469",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fdd0ea",
+            "on-secondary-container": "#79576c",
+            "tertiary": "#605a5b",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#ffdada",
+            "primary-fixed-dim": "#ffb3b6",
+            "on-primary-fixed": "#40000c",
+            "secondary-fixed": "#ffd8ed",
+            "secondary-fixed-dim": "#e5bad3",
+            "on-secondary-fixed": "#2c1325",
+            "background": "#f9f9ff",
+            "on-background": "#111c2d"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "sm": "0.5rem",
+            "md": "1.5rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline-hero": ["Playfair Display", "serif"],
+            "headline-lg": ["Playfair Display", "serif"],
+            "headline-md": ["Playfair Display", "serif"],
+            "headline-sm": ["Playfair Display", "serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'float-gentle': 'floatGentle 4s ease-in-out infinite',
+            'pulse-soft': 'pulseSoft 2.5s infinite',
+            'shimmer': 'shimmer 2s linear infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            floatGentle: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-6px) rotate(2deg)' }
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '0.88', transform: 'scale(1.03)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: #f9f9ff;
+        color: #111c2d;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f0f3ff;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #e5bdbe;
+        border-radius: 9999px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b80035;
+      }
+    }
+
+    /* Screen Transitions */
+    .screen-section {
+      transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .screen-section.hidden-screen {
+      display: none !important;
+      opacity: 0;
+      transform: scale(0.98) translateY(12px);
+      pointer-events: none;
+    }
+
+    .screen-section.active-screen {
+      display: flex !important;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    /* Shake animation for incorrect answer */
+    @keyframes romanticShake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-8px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(8px);
+      }
+    }
+
+    .shake-card {
+      animation: romanticShake 0.45s ease-in-out;
+    }
+
+    /* Floating Hearts Canvas */
+    #heartsCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 40;
+    }
+
+    /* Card glow & unlocked effects */
+    .unlocked-gift-glow {
+      box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.25), 0 0 0 2px rgba(225, 29, 72, 0.2);
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background antialiased relative min-h-screen selection:bg-secondary-container selection:text-on-secondary-fixed">
+
+  <!-- Ambient Glowing Blurs (Subtle Rose & Pastel Backdrops) -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div
+      class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[480px] bg-secondary-fixed/40 rounded-full blur-3xl opacity-60">
+    </div>
+    <div
+      class="absolute bottom-0 right-[-10%] w-[540px] h-[460px] bg-primary-fixed/30 rounded-full blur-3xl opacity-50">
+    </div>
+    <div
+      class="absolute top-1/3 left-[-10%] w-[420px] h-[380px] bg-secondary-container/30 rounded-full blur-3xl opacity-40">
+    </div>
+  </div>
+
+  <!-- Interactive Floating Hearts & Confetti Canvas -->
+  <canvas id="heartsCanvas"></canvas>
+
+  <!-- Discrete Floating Music Player (NO Navbar, purely floating romantic audio control) -->
+  <aside aria-label="Música de fondo" class="fixed top-4 right-4 z-50 flex items-center">
+    <button id="floatingMusicBtn" onclick="toggleFinalSong()"
+      class="group flex items-center gap-2 px-3.5 py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-md hover:shadow-lg border border-secondary-container/50 hover:bg-secondary-container/80 transition-all text-on-surface cursor-pointer text-xs font-medium"
+      title="Activar o pausar melodía">
+      <div
+        class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[16px]" id="floatingMusicIcon"
+          style="font-variation-settings: 'FILL' 1;">music_note</span>
+      </div>
+      <span class="hidden sm:inline font-semibold text-primary" id="floatingMusicLabel">Tu Música</span>
+      <div class="flex items-end gap-0.5 h-3 ml-0.5" id="floatingEqualizer">
+        <span class="w-0.5 h-2 bg-primary rounded-full animate-bounce"></span>
+        <span class="w-0.5 h-3 bg-primary rounded-full animate-bounce [animation-delay:0.2s]"></span>
+        <span class="w-0.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]"></span>
+      </div>
+    </button>
+  </aside>
+
+  <!-- MAIN WRAPPER (Unified Flow without any navbar) -->
+  <main class="relative z-10 w-full min-h-screen flex flex-col justify-between">
+
+    <!-- ========================================================================= -->
+    <!-- SCREEN 1: LOGIN CON MOSAICO DE FOTOS -->
+    <!-- ========================================================================= -->
+    <section id="screen-login"
+      class="screen-section active-screen flex-col w-full min-h-screen py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto justify-center">
+
+      <!-- Top Title Pill & Hero -->
+      <div class="flex flex-col items-center text-center mb-8 md:mb-10">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-fixed/50 text-secondary mb-4 shadow-sm">
+          <span class="material-symbols-outlined text-[18px] text-primary"
+            style="font-variation-settings: 'FILL' 1;">favorite</span>
+          <span class="text-xs uppercase tracking-widest text-primary font-bold">Un rincón exclusivo para los dos</span>
+          <span class="material-symbols-outlined text-[18px] text-primary"
+            style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </div>
+        <h1
+          class="font-headline-hero text-3xl sm:text-5xl md:text-6xl text-on-surface tracking-tight mb-3 font-semibold">
+          Feliz cumpleaños mi amor hermoso <span class="text-primary inline-block animate-pulse">❤️</span>
+        </h1>
+        <p class="text-base sm:text-xl text-secondary max-w-xl font-light">
+          Preparé algo especial para ti... <span class="italic font-headline-md text-primary font-normal">¿te atreves a
+            descubrirlo?</span>
+        </p>
+      </div>
+
+      <!-- Layout: Photos Left - Login Card in the Center - Photos Right (No overlay, photos around) -->
+      <div class="w-full flex flex-col lg:flex-row items-center justify-center gap-5 sm:gap-6 my-2">
+
+        <!-- Left Photos (Photos 1, 2, 3, 4) -->
+        <div class="w-full lg:w-[35%] grid grid-cols-2 gap-3 sm:gap-4 order-1" id="loginPhotosLeft">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Center Login Card (Middle) -->
+        <div class="w-full lg:w-[35%] max-w-md flex flex-col items-center order-2 shrink-0 my-2 lg:my-0">
+          <div
+            class="w-full bg-surface-container-lowest p-6 sm:p-8 rounded-2xl shadow-xl border border-secondary-container/40 flex flex-col items-center">
+
+            <div class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center mb-3.5 shadow-sm">
+              <span class="material-symbols-outlined text-primary text-[28px]"
+                style="font-variation-settings: 'FILL' 1;">lock_open</span>
+            </div>
+
+            <h2 class="font-headline-sm text-2xl text-on-surface text-center mb-1 font-semibold">
+              Nuestra Llave Secreta
+            </h2>
+            <p class="text-xs text-secondary text-center mb-5">
+              Solo para tus ojos, mi vida
+            </p>
+
+            <form class="w-full flex flex-col gap-3.5" id="romanticLoginForm"
+              onsubmit="event.preventDefault(); handleRomanticLogin();">
+              <!-- Campo Usuario -->
+              <div class="flex flex-col gap-1 text-left w-full">
+                <label class="text-xs font-semibold text-on-surface flex items-center gap-1.5" for="loginUser">
+                  <span class="material-symbols-outlined text-[15px] text-primary"
+                    style="font-variation-settings: 'FILL' 1;">face_4</span>
+                  Usuario
+                </label>
+                <input
+                  class="w-full bg-surface-container-low px-3.5 py-2.5 rounded-xl text-on-surface placeholder:text-secondary-fixed-dim text-sm outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 shadow-sm transition-all"
+                  id="loginUser" placeholder="Usuario" required type="text" />
+              </div>
+
+              <!-- Campo Contraseña -->
+              <div class="flex flex-col gap-1 text-left w-full">
+                <label class="text-xs font-semibold text-on-surface flex items-center gap-1.5" for="loginPassword">
+                  <span class="material-symbols-outlined text-[15px] text-primary"
+                    style="font-variation-settings: 'FILL' 1;">key</span>
+                  Contraseña
+                </label>
+                <input
+                  class="w-full bg-surface-container-low px-3.5 py-2.5 rounded-xl text-on-surface placeholder:text-secondary-fixed-dim text-sm outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 shadow-sm transition-all"
+                  id="loginPassword" placeholder="Contraseña" required type="password" />
+              </div>
+
+              <!-- Feedback / Error Message -->
+              <div class="hidden text-xs text-center py-2 px-3 rounded-xl font-medium transition-all"
+                id="loginFeedback"></div>
+
+              <!-- Botón Entrar -->
+              <button
+                class="w-full mt-1.5 py-3 px-5 rounded-full bg-primary-container hover:bg-primary text-on-primary font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 transform active:scale-95 group cursor-pointer"
+                id="loginSubmitBtn" type="submit">
+                <span>Entrar</span>
+                <span class="material-symbols-outlined text-[17px] group-hover:scale-125 transition-transform"
+                  style="font-variation-settings: 'FILL' 1;">favorite</span>
+              </button>
+            </form>
+
+            <!-- Pista editable y tierna -->
+            <div
+              class="mt-4 pt-3 flex items-start gap-2 text-left bg-surface-container-low/80 p-2.5 rounded-xl w-full border border-secondary-container/30">
+              <span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5"
+                style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+              <p class="text-[11px] text-secondary leading-snug">
+                <strong class="text-on-surface font-semibold">Pista:</strong> Usuario: <code
+                  class="bg-surface-container px-1 rounded text-primary font-bold">Dia de cumple</code> | Clave: <code
+                  class="bg-surface-container px-1 rounded text-primary font-bold">Mes de cumple</code>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Photos (Photos 5, 6, 7, 8) -->
+        <div class="w-full lg:w-[35%] grid grid-cols-2 gap-3 sm:gap-4 order-3" id="loginPhotosRight">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SCREEN 2: BIENVENIDA Y DINÁMICA -->
+    <!-- ========================================================================= -->
+    <section id="screen-dinamica"
+      class="screen-section hidden-screen flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 items-center">
+
+      <!-- Top Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/70 shadow-sm mb-6">
+        <span class="material-symbols-outlined text-primary text-[18px]"
+          style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+        <span class="text-xs uppercase tracking-widest text-primary font-bold">Un juego hecho con amor</span>
+      </div>
+
+      <!-- Heading -->
+      <div class="text-center max-w-3xl flex flex-col items-center gap-2 mb-10">
+        <h2 class="font-headline-hero text-3xl sm:text-4xl md:text-5xl text-primary italic font-semibold">
+          Tengo una pequeña sorpresa para ti...
+        </h2>
+        <p class="text-lg sm:text-xl text-secondary font-medium tracking-tight mt-1">
+          Preparé 10 regalos misteriosos para ti, pero hay una pequeña condición...
+        </p>
+        <p class="text-sm sm:text-base text-on-surface-variant max-w-2xl mt-2 leading-relaxed font-light">
+          Para descubrirlos tendrás que responder 10 preguntas sobre ti, sobre mí y sobre nuestra historia.
+        </p>
+        <p class="text-sm sm:text-base text-primary font-semibold max-w-2xl mt-1">
+          Cada respuesta correcta desbloqueará uno de tus regalos.
+        </p>
+      </div>
+
+      <!-- 3 Steps Explanatory Cards -->
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+        <div
+          class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-secondary-container/30 flex flex-col items-start transition-all hover:shadow-md">
+          <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">favorite</span>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-outline font-semibold mb-1">Paso 01</span>
+          <h3 class="font-headline-sm text-lg font-bold text-on-surface mb-2">Responde con el corazón</h3>
+          <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+            Preguntas románticas sobre momentos inolvidables, anécdotas compartidas y detalles que nos unen.
+          </p>
+        </div>
+
+        <div
+          class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-secondary-container/30 flex flex-col items-start transition-all hover:shadow-md">
+          <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">casino</span>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-outline font-semibold mb-1">Paso 02</span>
+          <h3 class="font-headline-sm text-lg font-bold text-on-surface mb-2">Desbloqueo aleatorio</h3>
+          <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+            ¡El azar sorprenderá tu destino! Cada respuesta correcta liberará uno de los 10 cofres al azar.
+          </p>
+        </div>
+
+        <div
+          class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-secondary-container/30 flex flex-col items-start transition-all hover:shadow-md">
+          <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-primary mb-4">
+            <span class="material-symbols-outlined text-[24px]">redeem</span>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-outline font-semibold mb-1">Paso 03</span>
+          <h3 class="font-headline-sm text-lg font-bold text-on-surface mb-2">10 Tesoros por descubrir</h3>
+          <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+            Al completar los 10 regalos, se revelará la Mistery Box y una carta final que guardará nuestro amor para
+            siempre.
+          </p>
+        </div>
+      </div>
+
+      <!-- Initial Preview of the 10 Locked Chests -->
+      <div class="w-full flex flex-col items-center mb-10">
+        <div class="flex items-center justify-between w-full mb-4 px-1">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">lock</span>
+            <span class="font-semibold text-sm sm:text-base text-on-surface">Cofres por desvelar</span>
+          </div>
+          <span
+            class="text-xs bg-secondary-fixed/50 text-on-secondary-fixed px-3 py-1 rounded-full uppercase tracking-wider font-bold">
+            0 / 10 Abiertos
+          </span>
+        </div>
+
+        <div class="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4" id="dinamicaPreviewChests">
+          <!-- Dynamically populated locked chests 1 to 9 + Mistery Box with "?" -->
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex flex-col items-center gap-2 mt-2">
+        <button onclick="startGameAdventure()"
+          class="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-primary-container text-on-primary font-semibold text-base sm:text-lg shadow-xl transition-all duration-300 hover:scale-105 hover:bg-primary active:scale-95 cursor-pointer">
+          <span>Comenzar aventura ❤️</span>
+          <span class="material-symbols-outlined text-[22px] transition-transform duration-300 group-hover:scale-125"
+            style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </button>
+        <span class="text-xs text-on-surface-variant flex items-center gap-1 mt-1 font-light">
+          <span class="material-symbols-outlined text-[15px] text-primary">verified</span>
+          Tómate todo el tiempo que necesites, cada detalle fue pensado para ti
+        </span>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SCREEN 3: TABLERO DEL JUEGO (10 REGALOS Y PREGUNTA ACTIVA) -->
+    <!-- ========================================================================= -->
+    <section id="screen-game"
+      class="screen-section hidden-screen flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+
+      <!-- Top Status Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div class="flex flex-col gap-1 max-w-xl">
+          <div class="flex items-center gap-1.5 text-primary">
+            <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+            <span class="text-xs uppercase tracking-widest text-primary font-bold">Aventura de Cumpleaños</span>
+          </div>
+          <h2 class="font-headline-hero text-2xl sm:text-3xl text-primary italic font-semibold leading-tight">
+            Nuestros recuerdos tienen una recompensa...
+          </h2>
+          <p class="text-xs sm:text-sm text-on-surface-variant">
+            Responde preguntas sobre nuestros momentos más dulces para abrir cada una de las 10 sorpresas secretas.
+          </p>
+        </div>
+
+        <!-- Progress Counter Widget -->
+        <div
+          class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-secondary-container/40 flex flex-col gap-2 min-w-[280px]">
+          <div class="flex items-center justify-between">
+            <span class="text-xs sm:text-sm font-semibold text-on-surface flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px] text-primary">redeem</span>
+              Regalos desbloqueados
+            </span>
+            <span class="text-sm font-bold text-primary" id="gameCounterText">0 / 10</span>
+          </div>
+
+          <!-- Visual Progress Bar -->
+          <div class="relative w-full h-3 bg-secondary-container/40 rounded-full overflow-hidden">
+            <div class="h-full bg-primary-container rounded-full transition-all duration-700 ease-out"
+              id="gameProgressFill" style="width: 0%;"></div>
+          </div>
+
+          <div class="flex items-center justify-between text-on-surface-variant text-xs mt-0.5">
+            <span class="flex items-center gap-1" id="gamePercentText">
+              <span class="material-symbols-outlined text-[13px] text-primary"
+                style="font-variation-settings: 'FILL' 1;">favorite</span>
+              0% completado
+            </span>
+            <span class="text-secondary font-medium" id="gameRemainingText">Faltan 10 regalos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Banner: Launch/Resume current Question Modal -->
+      <div
+        class="mb-6 p-4 rounded-2xl bg-gradient-to-r from-secondary-fixed/40 via-surface-container-lowest to-secondary-fixed/40 border border-secondary-container/50 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-md">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">help</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm sm:text-base text-on-surface" id="currentQuestionBannerTitle">Pregunta 1 / 10
+              lista</h4>
+            <p class="text-xs text-secondary">Toca el botón para responder y desbloquear tu próximo regalo.</p>
+          </div>
+        </div>
+        <button onclick="openQuestionModal()"
+          class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-primary-container hover:bg-primary text-on-primary text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+          <span>Responder Pregunta</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- The 10 Gifts Grid (Responsive 2 cols on mobile, 3 sm, 5 lg) -->
+      <div
+        class="w-full rounded-2xl p-4 sm:p-6 bg-surface-container-low/70 border border-secondary-container/30 shadow-sm mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-widest text-outline font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">grid_view</span>
+            Colección de Regalos (Toca los cofres abiertos para ver su sorpresa)
+          </span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4" id="gameGiftsGrid">
+          <!-- Dynamically populated 10 gifts with locked / unlocked interactive states -->
+        </div>
+      </div>
+
+      <!-- Bottom Explanatory Badges -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div
+          class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-secondary-container/20 flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">favorite</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-sm font-bold text-on-surface truncate">Nuestra Aventura</span>
+            <p class="text-xs text-on-surface-variant truncate">Preguntas sobre nuestros momentos más dulces</p>
+          </div>
+        </div>
+
+        <div
+          class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-secondary-container/20 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">casino</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-sm font-bold text-on-surface truncate">Desbloqueo Aleatorio</span>
+            <p class="text-xs text-on-surface-variant truncate">Cada acierto revela un regalo al azar</p>
+          </div>
+        </div>
+
+        <div
+          class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-secondary-container/20 flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+            <span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-sm font-bold text-on-surface truncate">Mistery Box Final</span>
+            <p class="text-xs text-on-surface-variant truncate">El cofre 10 guarda la sorpresa estelar</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SCREEN 4: FELICITACIÓN FINAL Y CARTA DE AMOR -->
+    <!-- ========================================================================= -->
+    <section id="screen-final"
+      class="screen-section hidden-screen flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 items-center">
+
+      <!-- Top Celebration Pill -->
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-lowest shadow-lg shadow-primary/5 mb-4 border border-secondary-container/40">
+        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-secondary-container text-primary">
+          <span class="material-symbols-outlined text-[16px]"
+            style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+        </span>
+        <span class="text-xs sm:text-sm font-bold text-primary">10 de 10 regalos desbloqueados</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+        <span class="text-xs uppercase tracking-wider text-on-surface-variant flex items-center gap-1 font-semibold">
+          Aventura completada
+          <span class="material-symbols-outlined text-[14px] text-primary"
+            style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+        </span>
+      </div>
+
+      <!-- Main Emotion Title -->
+      <h1
+        class="font-headline-hero text-3xl sm:text-5xl md:text-6xl text-on-surface tracking-tight text-center font-bold">
+        ¡Lo lograste, <span class="italic font-headline-hero text-primary">mi amor! ❤️</span>
+      </h1>
+      <p class="text-base sm:text-xl text-on-surface-variant max-w-xl text-center mt-2 font-light">
+        Descubriste todos tus regalos... pero falta el más importante de todos.
+      </p>
+
+      <!-- SVG Ring: Visual 100% completion meter -->
+      <div
+        class="mt-4 flex items-center gap-3 px-5 py-2.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm border border-secondary-container/40">
+        <div class="relative w-8 h-8 flex items-center justify-center">
+          <svg class="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
+            <path class="text-secondary-fixed stroke-current"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
+              stroke-width="3"></path>
+            <path class="text-primary stroke-current"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
+              stroke-dasharray="100, 100" stroke-linecap="round" stroke-width="3"></path>
+          </svg>
+          <span class="material-symbols-outlined text-primary text-[15px] absolute"
+            style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </div>
+        <div class="text-left">
+          <p class="text-[10px] uppercase tracking-widest text-outline font-semibold">Meta Romántica</p>
+          <p class="text-xs sm:text-sm font-bold text-on-surface leading-none">100% Amor Descubierto</p>
+        </div>
+      </div>
+
+      <!-- Editorial Split: Keepsake Letter (Left) & Modern Polaroid (Right) -->
+      <div class="w-full mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+
+        <!-- Left Column: The Keepsake Letter -->
+        <div class="lg:col-span-7 flex flex-col">
+          <div
+            class="relative bg-surface-container-lowest rounded-2xl shadow-xl shadow-primary/5 p-6 sm:p-8 md:p-10 border border-secondary-container/40 overflow-hidden">
+            <!-- Subtle faux parchment background accent -->
+            <div
+              class="absolute -right-16 -top-16 w-56 h-56 bg-secondary-fixed/30 rounded-full blur-2xl pointer-events-none">
+            </div>
+
+            <!-- Digital Wax Seal Stamp Header -->
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-secondary-container/30">
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+                  <span class="material-symbols-outlined text-[20px]"
+                    style="font-variation-settings: 'FILL' 1;">mail_lock</span>
+                </span>
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest text-outline font-semibold">Carta Exclusiva</span>
+                  <h3 class="font-headline-sm text-lg sm:text-xl italic text-primary font-semibold leading-tight">
+                    Palabras desde el alma</h3>
+                </div>
+              </div>
+              <span
+                class="text-xs text-on-surface-variant px-3 py-1 rounded-full bg-surface-container-low font-medium">Edición
+                Cumpleaños</span>
+            </div>
+
+            <!-- Letter Title -->
+            <h2
+              class="font-headline-lg text-xl sm:text-2xl md:text-3xl text-on-surface tracking-tight mb-4 font-semibold">
+              Para la persona que ilumina cada uno de mis días
+            </h2>
+
+            <!-- Editable Letter Content Area -->
+            <div class="relative text-on-surface-variant text-sm sm:text-base leading-relaxed space-y-4 font-normal"
+              id="finalLetterTextContainer">
+              <!-- Dynamically populated from FINAL_MESSAGE -->
+            </div>
+
+            <!-- Decorative Floral Divider Icon -->
+            <div class="mt-8 flex items-center justify-center gap-3 text-secondary">
+              <span class="h-[1px] w-12 bg-secondary-fixed"></span>
+              <span class="material-symbols-outlined text-[20px] text-primary"
+                style="font-variation-settings: 'FILL' 1;">favorite</span>
+              <span class="h-[1px] w-12 bg-secondary-fixed"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Modern Polaroid & Actions -->
+        <div class="lg:col-span-5 flex flex-col gap-5">
+          <!-- Modern Polaroid Frame -->
+          <div
+            class="relative bg-surface-container-lowest rounded-2xl p-4 sm:p-5 shadow-xl shadow-primary/10 border border-secondary-container/40 transition-transform duration-500 hover:rotate-1">
+            <!-- Cute Heart Clip Pin -->
+            <div
+              class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+              <span class="material-symbols-outlined text-[18px]"
+                style="font-variation-settings: 'FILL' 1;">push_pin</span>
+            </div>
+
+            <!-- Photo Container -->
+            <div
+              class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high mt-1 shadow-inner">
+              <img id="finalPolaroidImg"
+                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                alt="Nuestra foto especial de cumpleaños" src="" />
+              <div class="absolute inset-0 bg-gradient-to-t from-on-background/50 via-transparent to-transparent"></div>
+              <div
+                class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+                <span class="text-xs text-primary font-bold">Ultimo regalo ✨</span>
+              </div>
+            </div>
+
+            <!-- Polaroid Handwritten-style Caption -->
+            <div class="pt-4 pb-1 px-1 text-center flex flex-col items-center">
+              <p class="font-headline-sm text-base sm:text-lg italic text-on-surface">
+                “Por muchos años más coleccionando sonrisas juntos.”
+              </p>
+              <p class="text-xs sm:text-sm text-primary mt-1 font-bold">
+                Te amo con todo mi corazón.
+              </p>
+            </div>
+          </div>
+
+          <!-- Mini Keepsake Audio Capsule Card -->
+          <div
+            class="bg-surface-container-lowest/90 backdrop-blur-md rounded-2xl p-4 shadow-md border border-secondary-container/40 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0">
+              <button onclick="toggleFinalSong()"
+                class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg shadow-primary/30 transition-transform active:scale-95 shrink-0 cursor-pointer"
+                title="Reproducir música">
+                <span class="material-symbols-outlined text-[22px]" id="finalAudioBtnIcon">play_arrow</span>
+              </button>
+              <div class="flex flex-col min-w-0">
+                <span class="text-sm font-bold text-on-surface truncate">Tu Música</span>
+                <span class="text-xs text-on-surface-variant flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  Sonando en tu corazón
+                </span>
+              </div>
+            </div>
+            <!-- Sound wave animation -->
+            <div class="flex items-end gap-1 h-5 shrink-0 text-primary">
+              <span class="w-1 h-2.5 bg-primary rounded-full animate-bounce"></span>
+              <span class="w-1 h-5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]"></span>
+              <span class="w-1 h-3 bg-primary rounded-full animate-bounce [animation-delay:0.4s]"></span>
+              <span class="w-1 h-4 bg-primary rounded-full animate-bounce [animation-delay:0.1s]"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Final Actions Button Bar -->
+      <div class="w-full max-w-4xl mt-8 pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <!-- Re-experience Gifts Button -->
+        <button onclick="showGameScreen()"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-surface-container-lowest text-on-surface hover:bg-secondary-container transition-all shadow-sm border border-secondary-container/40 text-xs sm:text-sm font-semibold cursor-pointer">
+          <span class="material-symbols-outlined text-primary text-[18px]"
+            style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+          <span>Revivir mis 10 regalos 🎁</span>
+        </button>
+
+        <!-- Send Warm Hug Button -->
+        <button onclick="triggerWarmHugCelebration()"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-on-primary hover:bg-primary transition-all shadow-xl shadow-primary-container/30 active:scale-95 text-xs sm:text-sm font-bold cursor-pointer">
+          <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+          <span>Enviar un abrazo al cumpleañero 💌</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: PREGUNTA ACTIVA DEL JUEGO -->
+  <!-- ========================================================================= -->
+  <div id="questionModal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden transition-opacity duration-300">
+    <div
+      class="relative w-full max-w-xl bg-surface-container-lowest rounded-2xl shadow-2xl p-5 sm:p-7 flex flex-col gap-4 overflow-hidden border border-secondary-container/50 max-h-[92vh] overflow-y-auto">
+
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between">
+        <div
+          class="flex items-center gap-2 text-primary font-semibold text-xs sm:text-sm bg-secondary-fixed/50 px-3.5 py-1 rounded-full">
+          <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+          <span id="modalQuestionBadge">Pregunta 1 / 10</span>
+        </div>
+        <button onclick="closeQuestionModal()"
+          class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+          title="Minimizar">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Question Text & Hint -->
+      <div class="flex flex-col gap-1.5">
+        <h3 class="font-headline-sm text-lg sm:text-xl font-bold text-on-surface leading-snug" id="modalQuestionTitle">
+          ¿Pregunta sobre nuestra historia?
+        </h3>
+        <p class="text-xs text-on-surface-variant font-light" id="modalQuestionHint">
+          Pista romántica...
+        </p>
+      </div>
+
+      <!-- Options Container (4 options) -->
+      <div class="flex flex-col gap-2.5 my-1" id="modalOptionsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Feedback Area for Incorrect / Correct State -->
+      <div id="modalFeedbackBox" class="hidden rounded-xl p-3.5 flex items-center gap-3 transition-all">
+        <!-- Filled on answer -->
+      </div>
+
+      <!-- Modal Footer Action Buttons -->
+      <div id="modalActionButtons"
+        class="hidden flex-col sm:flex-row items-center justify-end gap-2.5 pt-2 border-t border-secondary-container/30">
+        <button id="modalContinueBtn" onclick="handleContinueToNextQuestion()"
+          class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-primary-container text-on-primary font-bold text-xs sm:text-sm hover:bg-primary transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer active:scale-95">
+          <span>Continuar ❤️</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification (Floating hugs, toasts) -->
+  <div id="romanticToast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out px-5 py-3 rounded-full bg-surface-container-lowest shadow-2xl border border-secondary-container/40 flex items-center gap-2 text-xs sm:text-sm font-semibold text-on-surface">
+    <span class="material-symbols-outlined text-primary text-[20px]" id="toastIcon"
+      style="font-variation-settings: 'FILL' 1;">favorite</span>
+    <span id="toastMessage">¡Mensaje romántico!</span>
+  </div>
+
+  <!-- Footer Romántico y Minimalista (Sin barra de navegación) -->
+  <footer
+    class="relative z-10 w-full bg-surface-container-low/70 backdrop-blur-md py-6 mt-8 border-t border-secondary-container/30">
+    <div class="w-full px-4 max-w-4xl mx-auto flex flex-col items-center justify-center text-center gap-1.5">
+      <div class="flex items-center justify-center gap-2 text-primary">
+        <span class="material-symbols-outlined text-[16px]">favorite</span>
+        <span class="font-headline-sm italic text-primary text-sm sm:text-base font-semibold">Feliz cumpleaños mi amor
+          hermoso</span>
+        <span class="material-symbols-outlined text-[16px]">favorite</span>
+      </div>
+      <p class="text-xs text-on-surface-variant max-w-md">Diseñado con todo mi corazón para celebrar cada segundo de tu
+        existencia maravillosa.</p>
+      <span class="text-[10px] text-outline tracking-widest uppercase mt-0.5">Nuestra Historia de Amor • Para
+        Siempre</span>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: LÓGICA COMPLETA DEL JUEGO Y CONFIGURACIÓN -->
+  <!-- ========================================================================= -->
+  <script>
+    /* ==========================================================================
+       CONFIGURACIÓN EDITABLE - CUMPLE DE MI AMOR
+       ========================================================================== */
+
+    // 1. CREDENCIALES DE ACCESO
+    // Modifica aquí el usuario y la contraseña deseados
+    const LOGIN_USER = "03";
+    const LOGIN_PASSWORD = "Octubre";
+
+    // 2. FOTOGRAFÍAS DEL COLLAGE (PANTALLA DE LOGIN - PHOTO_01 a PHOTO_08)
+    const PHOTO_01 = "images/1.jpeg";
+    const PHOTO_02 = "images/2.jpeg";
+    const PHOTO_03 = "images/3.jpeg";
+    const PHOTO_04 = "images/4.jpeg";
+    const PHOTO_05 = "images/5.jpeg";
+    const PHOTO_06 = "images/6.jpeg";
+    const PHOTO_07 = "images/7.jpeg";
+    const PHOTO_08 = "images/8.jpeg";
+
+    // 3. FOTOGRAFÍA FINAL (POLAROID)
+    const FINAL_PHOTO = "images/10.jpeg";
+
+    // 4. MENSAJE FINAL (CARTA DE AMOR)
+    const FINAL_MESSAGE = `Felicitaciones mi amor...
+
+Hoy celebro tu vida, tu risa, tu bondad infinita y la bendición inmensa que es caminar de tu mano. Cada pregunta que respondiste representa un pedacito de todo lo que hemos construido juntos. No hay regalo en el mundo que alcance para agradecerte todo el amor que me das todos los días.
+
+Eres mi refugio seguro, mi cómplice favorita y el sueño más hermoso que la vida me regaló. Que este nuevo año te devuelva multiplicado cada instante de felicidad que nos regalas a quienes tenemos la fortuna de amarte.
+
+Siempre tuyo, hoy y todos los días de mi vida. ❤️`;
+
+    // 5. LAS 10 PREGUNTAS (EXACTAMENTE 10 PREGUNTAS MOCKUP AGRUPADAS)
+    const QUESTIONS = [
+      {
+        id: 1,
+        question: "¿Dónde fue nuestra primera cita oficial?",
+        hint: "Pista: Un lugar lleno de juegos donde el tiempo pasó volando...",
+        options: [
+          "Fuimos a tomar aguapanelita con tapiocas",
+          "En una sala de cine viendo una película de terror",
+          "Caminando por el centro comercial comiendo helado",
+          "Fuimos al centro comercial a jugar y tomarnos las mejores fotos"
+        ],
+        correctAnswer: 3
+      },
+      {
+        id: 2,
+        question: "¿Cuál es ese dulce que cuando la disfrutas te alegra el día?",
+        hint: "Pista: Crujiente, deliciosa y perfecta...",
+        options: [
+          "Rollo de canela de Oreo",
+          "Galletas rellenas de nutella o pistacho",
+          "Tu hombre que anda en el GYM",
+          "Malteada"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 3,
+        question: "¿Qué detalle tuyo me enamora cada día más?",
+        hint: "Pista: Ocurre de forma completamente natural en tu rostro...",
+        options: [
+          "Tu forma tan dulce de mirarme cuando sonríes sin darte cuenta",
+          "Tu habilidad para ganarme siempre en los juegos de mesa",
+          "Cuando te burlas de mi porque eres maldadosa",
+          "Tus caras graciosas cuando algo no sale como esperabas"
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 4,
+        question: "¿Cuál fue el mejor viaje que hicimos fuera de la ciudad?",
+        hint: "Pista: Estuvimos volando más de 6 horas sobre el mar...",
+        options: [
+          "Cancun",
+          "Cartagena",
+          "Europa",
+          "Pereia"
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: 5,
+        question: "¿Cuál es esa canción que cuando suena nos hace sentir en nuestro propio mundo?",
+        hint: "Pista: Esa melodía movida que nos hace movernos...",
+        options: [
+          "Walking On a Dream - Empire of the Sun",
+          "Viento - Caifanes",
+          "No One Noticed - The Marias",
+          "GAMINA - Kris R"
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 6,
+        question: "¿Qué fue lo primero que pasó por mi mente cuando te vi por primera vez?",
+        hint: "Pista: Esta belleza de donde salió ?",
+        options: [
+          "‘Qué ojos tan brillantes y qué sonrisa tan hermosa tiene’",
+          "‘Será que esta mujer es muy agresiva ?’",
+          "‘Tengo que buscar una excusa para volver a hablarle hoy mismo’",
+          "‘Esta mujer tengo que enamorarla como sea’"
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 7,
+        question: "¿Cuál es nuestro plan perfecto para un viernes por la tarde ?",
+        hint: "Pista: Cero prisas, máxima comodidad y mucho cariño...",
+        options: [
+          "Estar arrunchados, abrazados viendo series y comiendo postres",
+          "Salir a recorrer centros comerciales sin rumbo fijo",
+          "Darnos una revolcadita intensa desde muy temprano y comer dulces",
+          "Ayudarme a organizar la casa porque me cogió la tarde"
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: 8,
+        question: "¿Qué anécdota divertida recuerdas de mi que te da risa cada vez ?",
+        hint: "Ninguna",
+        options: [
+          "Cuando pensé que la suegra me habia regalado otras cosas",
+          "Cuando casi me pica un alacrán",
+          "Cuando tu papá me asustó con el gato",
+          "Cuando centrifugé miel por primera vez"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 9,
+        question: "¿Soy buen novio contigo?",
+        hint: "Respuesta honesta...",
+        options: [
+          "Si",
+          "No, por ningun motivo, dame mis regalos y largate"
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 10,
+        question: "¿Crees que tu familia ya me quiere ?",
+        hint: "Pista: ?",
+        options: [
+          "Te aprecian",
+          "Mi mamá si pero mi papá no",
+          "De pronto si me pagas la universidad",
+          "No se vaya pregunteles"
+        ],
+        correctAnswer: 0
+      }
+    ];
+
+    // 6. LOS 10 REGALOS (EXACTAMENTE 10 REGALOS EDITABLES)
+    const GIFTS = [
+      {
+        id: 1,
+        name: "Regalo 1",
+        label: "Regalo 01",
+        title: "Anillo de Promesa",
+        badge: "Cofre Romántico",
+        icon: "favorite",
+        type: "letter",
+        placeholder: "GIFT_01_CONTENT",
+        description: "Un pedacito de mi corazón escrito solo para tus ojos.",
+        content: `Mi niña hermosa,
+Desde el primer día que entraste a mi vida entendí lo que significa amar de verdad. Gracias por cada sonrisa, por cada palabra de aliento y por hacer que cualquier día ordinario se sienta como una aventura mágica. ¡Feliz cumpleaños, mi amor!`
+      },
+      {
+        id: 2,
+        name: "Regalo 2",
+        label: "Regalo 02",
+        title: "Stanley Orginal",
+        badge: "Cupón Especial",
+        icon: "favorite",
+        type: "coupon",
+        placeholder: "GIFT_02_CONTENT",
+        description: "Válido para una cena romántica inolvidable donde tú eliges todo.",
+        content: `🎫 **CUPÓN OFICIAL DE CUMPLEAÑOS**
+• **Válido para:** Una cena romántica completa donde tú eliges el restaurante o el menú en casa.
+• **Incluye:** Tu postre favorito, tu bebida preferida y mimos ilimitados.
+• **Vencimiento:** ¡Nunca vence!`
+      },
+      {
+        id: 3,
+        name: "Regalo 3",
+        label: "Regalo 03",
+        title: "Bolso Cyzone",
+        badge: "Momento Mágico",
+        icon: "favorite",
+        type: "photo",
+        placeholder: "GIFT_03_CONTENT",
+        description: "Aquel instante en que supe que no quería soltar tu mano jamás.",
+        mediaUrl: PHOTO_02,
+        content: `Esa tarde frente a las olas... el cielo se tiñó de rosa y dorado, pero nada brillaba tanto como tus ojos. Siempre guardo esta foto como uno de los tesoros más hermosos de nuestra historia.`
+      },
+      {
+        id: 4,
+        name: "Regalo 4",
+        label: "Regalo 04",
+        title: "Medias",
+        badge: "Melodía de Amor",
+        icon: "favorite",
+        type: "audio",
+        placeholder: "GIFT_04_CONTENT",
+        description: "La canción que suena cuando pienso en ti.",
+        content: `🎵 Cada nota de nuestra melodía favorita me recuerda la suavidad de tu voz y cómo haces latir mi corazón. Dale play al botón flotante de arriba para que nos acompañe siempre.`
+      },
+      {
+        id: 5,
+        name: "Regalo 5",
+        label: "Regalo 05",
+        title: "Estuche AirPods",
+        badge: "Cupón Relajante",
+        icon: "favorite",
+        type: "coupon",
+        placeholder: "GIFT_05_CONTENT",
+        description: "Canjeable en cualquier momento en que necesites desconectarte.",
+        content: `💆‍♀️ **VALE POR DÍA DE SPA EN CASA**
+• **Incluye:** Masaje relajante en espalda y pies, velitas aromáticas, té favorito y abrazos apretaditos hasta que te sientas como una reina consentida.`
+      },
+      {
+        id: 6,
+        name: "Regalo 6",
+        label: "Regalo 06",
+        title: "Mouse",
+        badge: "Detalles Únicos",
+        icon: "favorite",
+        type: "list",
+        placeholder: "GIFT_06_CONTENT",
+        description: "Solo 10 de las millones de razones por las que te amo.",
+        content: ``
+      },
+      {
+        id: 7,
+        name: "Regalo 7",
+        label: "Regalo 07",
+        title: "Pulsera y Earcuff",
+        badge: "Boleto de Aventura",
+        icon: "favorite",
+        type: "surprise",
+        placeholder: "GIFT_07_CONTENT",
+        description: "Un viaje o salida sorpresa que haremos muy pronto.",
+        content: `✈️ **TARJETA DE EMBARQUE ROMÁNTICA**
+• **Destino:** Un lugar nuevo para coleccionar sonrisas.
+• **Equipaje:** Una maleta ligera y muchas ganas de abrazarnos.
+• **Fecha:** ¡Muy pronto te daré la sorpresa completa!`
+      },
+      {
+        id: 8,
+        name: "Regalo 8",
+        label: "Regalo 08",
+        title: "Cable tipo C | iPhone",
+        badge: "Poesía Romántica",
+        icon: "favorite",
+        type: "letter",
+        placeholder: "GIFT_08_CONTENT",
+        description: "Unos versos nacidos desde lo más profundo.",
+        content: `.`
+      },
+      {
+        id: 9,
+        name: "Regalo 9",
+        label: "Regalo 09",
+        title: "Mascarillas e Hidrogel",
+        badge: "Deseo Concedido",
+        icon: "favorite",
+        type: "surprise",
+        placeholder: "GIFT_09_CONTENT",
+        description: "Pide cualquier deseo y haré hasta lo imposible por cumplirlo.",
+        content: `🌟 **UN DESEO A LA CARTA**
+Cierra tus ojos ahora mismo, pide un deseo sincero... y prométeme que me lo contarás para que juntos lo convirtamos en realidad. Eres mi estrella favorita.`
+      },
+      {
+        id: 10,
+        name: "Mistery Box",
+        label: "Mistery Box 🌟",
+        title: "El Gran Cofre Secreto",
+        badge: "Cofre Dorado Estelar",
+        icon: "favorite",
+        type: "mystery",
+        placeholder: "MYSTERY_BOX_CONTENT",
+        description: "¡La sorpresa cumbre de tu cumpleaños!",
+        content: `🎁 **¡FELICIDADES MI AMOR HERMOSO!**
+Has desbloqueado el tesoro supremo. Esta Mistery Box guarda un regalo tangible que te entregaré en persona, pero sobre todo guarda mi promesa de amarte, cuidarte, respetarte y hacerte la mujer más feliz del universo todos los días de mi vida.
+¡Te amo infinito!`
+      }
+    ];
+
+    /* ==========================================================================
+       ESTADO DEL JUEGO Y VARIABLES DE CONTROL
+       ========================================================================== */
+    let gameState = {
+      unlockedGiftIds: [],         // Array con IDs de regalos desbloqueados [ej: 3, 7, ...]
+      shuffledQuestions: [],       // Preguntas ordenadas aleatoriamente
+      currentQuestionIndex: 0,     // Índice de pregunta activa (0 a 9)
+      lockedGiftIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], // Regalos aún bloqueados
+    };
+
+    /* ==========================================================================
+       INICIALIZACIÓN AL CARGAR LA PÁGINA
+       ========================================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Renderizar fotos del login
+      renderLoginPhotos();
+
+      // 2. Renderizar cofres bloqueados en Dinámica
+      renderDinamicaPreviewChests();
+
+      // 3. Preparar preguntas aleatorias
+      shuffleGameQuestions();
+
+      // 4. Renderizar tablero de regalos en pantalla de juego
+      renderGameGiftsGrid();
+
+      // 5. Configurar foto y carta final
+      setupFinalCelebrationData();
+
+      // 6. Iniciar canvas de corazones flotantes
+      initHeartsCanvas();
+    });
+
+    // Renderizar fotos alrededor del Login (4 a la izquierda y 4 a la derecha)
+    function renderLoginPhotos() {
+      const couplePhotos = [
+        { id: "PHOTO_01", title: "Cuando te me fuiste", url: PHOTO_01, rotate: "-rotate-2" },
+        { id: "PHOTO_02", title: "Navidad juntos", url: PHOTO_02, rotate: "rotate-1" },
+        { id: "PHOTO_03", title: "Mi sonrisa favorita", url: PHOTO_03, rotate: "-rotate-1" },
+        { id: "PHOTO_04", title: "Europa juntos", url: PHOTO_04, rotate: "rotate-2" },
+        { id: "PHOTO_05", title: "Torre Eiffel", url: PHOTO_05, rotate: "rotate-1" },
+        { id: "PHOTO_06", title: "Alcanzaste otro nivel", url: PHOTO_06, rotate: "-rotate-2" },
+        { id: "PHOTO_07", title: "3er aniversario", url: PHOTO_07, rotate: "rotate-2" },
+        { id: "PHOTO_08", title: "La mirada que amo", url: PHOTO_08, rotate: "-rotate-1" }
+      ];
+
+      function createPhotoCard(photo) {
+        return `
+          <div class="flex flex-col gap-1.5 p-2 sm:p-2.5 bg-surface-container-lowest rounded-2xl shadow-sm border border-secondary-container/40 transform ${photo.rotate} transition-all duration-300 hover:rotate-0 hover:shadow-md hover:scale-[1.02]">
+            <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container shadow-inner">
+              <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" src="${photo.url}" alt="${photo.title}"/>
+            </div>
+            <p class="text-[11px] sm:text-xs text-secondary truncate font-medium text-center px-1">${photo.title}</p>
+          </div>
+        `;
+      }
+
+      const leftContainer = document.getElementById("loginPhotosLeft");
+      const rightContainer = document.getElementById("loginPhotosRight");
+
+      if (leftContainer) {
+        leftContainer.innerHTML = couplePhotos.slice(0, 4).map(createPhotoCard).join('');
+      }
+      if (rightContainer) {
+        rightContainer.innerHTML = couplePhotos.slice(4, 8).map(createPhotoCard).join('');
+      }
+    }
+
+    // Renderizar cofres con "?" en pantalla de Dinámica
+    function renderDinamicaPreviewChests() {
+      const container = document.getElementById("dinamicaPreviewChests");
+      if (!container) return;
+
+      container.innerHTML = GIFTS.map(gift => {
+        const isMystery = gift.id === 10;
+        return `
+          <div class="group relative ${isMystery ? 'bg-gradient-to-br from-surface-container-lowest via-secondary-fixed/20 to-surface-container-lowest' : 'bg-surface-container-lowest'} p-4 rounded-xl shadow-sm border border-secondary-container/30 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-full ${isMystery ? 'bg-secondary-fixed text-primary' : 'bg-surface-container-low text-outline'} flex items-center justify-center mb-2.5">
+              <span class="material-symbols-outlined text-[24px]">${isMystery ? 'help' : 'lock'}</span>
+            </div>
+            <span class="font-headline-sm text-sm sm:text-base text-primary font-bold leading-tight mb-0.5">${gift.name}</span>
+            <span class="text-[11px] text-on-surface-variant font-medium">🎁 ?</span>
+            <span class="mt-1 text-[9px] tracking-widest uppercase font-semibold text-outline">(Bloqueado)</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Barajar preguntas aleatoriamente pero sin repetirlas
+    function shuffleGameQuestions() {
+      gameState.shuffledQuestions = [...QUESTIONS].sort(() => Math.random() - 0.5);
+      gameState.currentQuestionIndex = 0;
+    }
+
+    // Configuración de la pantalla final
+    function setupFinalCelebrationData() {
+      const polaroid = document.getElementById("finalPolaroidImg");
+      if (polaroid) polaroid.src = FINAL_PHOTO;
+
+      const letterContainer = document.getElementById("finalLetterTextContainer");
+      if (letterContainer) {
+        letterContainer.innerHTML = FINAL_MESSAGE.split('\n\n').map(paragraph => `
+          <p class="leading-relaxed">${paragraph.replace(/\n/g, '<br/>')}</p>
+        `).join('');
+      }
+    }
+
+    /* ==========================================================================
+       MANEJO DEL LOGIN
+       ========================================================================== */
+    function handleRomanticLogin() {
+      const userInput = document.getElementById('loginUser').value.trim();
+      const passInput = document.getElementById('loginPassword').value.trim();
+      const feedback = document.getElementById('loginFeedback');
+      const submitBtn = document.getElementById('loginSubmitBtn');
+
+      if (!userInput || !passInput) return;
+
+      // Normalización para comparar sin distinción de mayúsculas ni acentos/ñ
+      const normalize = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ñ/g, "n");
+      const isUserCorrect = userInput.toLowerCase() === LOGIN_USER.toLowerCase() || normalize(userInput) === normalize(LOGIN_USER);
+      const isPassCorrect = passInput.toLowerCase() === LOGIN_PASSWORD.toLowerCase() || normalize(passInput) === normalize(LOGIN_PASSWORD);
+
+      if (isUserCorrect && isPassCorrect) {
+        // Correcto!
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+          <span>Abriendo tu sorpresa...</span>
+        `;
+        feedback.className = "text-xs sm:text-sm text-center py-2.5 px-3 rounded-xl font-medium transition-all bg-secondary-fixed text-primary block";
+        feedback.innerHTML = "¡Acceso concedido, mi amor hermoso! ❤️ Preparando tu aventura...";
+
+        // Disparo de corazones
+        burstRomanticHearts(window.innerWidth / 2, window.innerHeight / 2, 40);
+
+        setTimeout(() => {
+          transitionScreen("screen-login", "screen-dinamica");
+        }, 1100);
+
+      } else {
+        // Datos incorrectos
+        feedback.className = "text-xs sm:text-sm text-center py-2.5 px-3 rounded-xl font-medium transition-all bg-red-100 text-red-700 block border border-red-200 shake-card";
+        feedback.innerHTML = "Mmm... parece que esos no son nuestros datos secretos ❤️";
+
+        const loginCard = document.querySelector("#romanticLoginForm").parentElement;
+        if (loginCard) {
+          loginCard.classList.remove('shake-card');
+          void loginCard.offsetWidth; // trigger reflow
+          loginCard.classList.add('shake-card');
+        }
+      }
+    }
+
+    /* ==========================================================================
+       TRANSICIONES DE PANTALLAS (Flujo Suave sin Navbar)
+       ========================================================================== */
+    function transitionScreen(fromId, toId) {
+      const fromEl = document.getElementById(fromId);
+      const toEl = document.getElementById(toId);
+
+      if (!fromEl || !toEl) return;
+
+      fromEl.classList.remove("active-screen");
+      fromEl.classList.add("hidden-screen");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      setTimeout(() => {
+        toEl.classList.remove("hidden-screen");
+        toEl.classList.add("active-screen");
+      }, 150);
+    }
+
+    // Comenzar Aventura desde pantalla 2 a pantalla 3
+    function startGameAdventure() {
+      transitionScreen("screen-dinamica", "screen-game");
+      // Abrir automáticamente la primera pregunta tras breve transición
+      setTimeout(() => {
+        openQuestionModal();
+      }, 600);
+    }
+
+    function showGameScreen() {
+      transitionScreen("screen-final", "screen-game");
+    }
+
+    /* ==========================================================================
+       TABLERO DE JUEGO Y RENDERIZADO DE REGALOS
+       ========================================================================== */
+    function renderGameGiftsGrid() {
+      const container = document.getElementById("gameGiftsGrid");
+      if (!container) return;
+
+      container.innerHTML = GIFTS.map(gift => {
+        const isUnlocked = gameState.unlockedGiftIds.includes(gift.id);
+        const isMystery = gift.id === 10;
+
+        if (isUnlocked) {
+          // REGALO DESBLOQUEADO
+          return `
+              <div class="group relative bg-surface-container-lowest rounded-2xl p-4 shadow-md unlocked-gift-glow transition-all flex flex-col items-center text-center justify-between aspect-square border border-primary-container/40">
+              
+              <div class="w-full flex justify-between items-center text-primary text-xs font-bold">
+                <span class="truncate">${gift.label}</span>
+                <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+              </div>
+
+              <div class="flex flex-col items-center gap-1.5 my-auto">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full ${isMystery ? 'bg-gradient-to-tr from-amber-400 to-rose-500 text-white' : 'bg-secondary-fixed text-primary'} flex items-center justify-center shadow-md animate-float-gentle">
+                  <span class="material-symbols-outlined text-[26px] sm:text-[28px]">${gift.icon}</span>
+                </div>
+                <span class="font-bold text-xs sm:text-sm text-primary line-clamp-1">${gift.title}</span>
+              </div>
+
+            </div>
+          `;
+        } else {
+          // REGALO BLOQUEADO (muestra "?")
+          return `
+            <div onclick="handleLockedGiftClick(${gift.id})" 
+                 class="group relative bg-surface-container-lowest/80 rounded-2xl p-4 shadow-sm border border-secondary-container/30 transition-all flex flex-col items-center text-center justify-between aspect-square cursor-pointer hover:bg-surface-container-low" 
+                 id="gift-card-${gift.id}">
+              
+              <div class="w-full flex justify-between items-center text-on-surface-variant text-xs">
+                <span>${isMystery ? 'Mistery Box' : 'Caja 0' + gift.id}</span>
+                <span class="material-symbols-outlined text-[16px] text-outline">lock</span>
+              </div>
+
+              <div class="flex flex-col items-center gap-1 my-auto">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+                  <span class="material-symbols-outlined text-[24px]">redeem</span>
+                </div>
+                <span class="font-headline-sm text-xl sm:text-2xl font-bold text-on-surface-variant">?</span>
+              </div>
+
+              <span class="text-[10px] text-outline uppercase tracking-wider font-semibold">Bloqueado</span>
+            </div>
+          `;
+        }
+      }).join('');
+
+      // Actualizar contadores y barra
+      updateProgressCounters();
+    }
+
+    // Actualizar contadores de regalos y barra de progreso
+    function updateProgressCounters() {
+      const count = gameState.unlockedGiftIds.length;
+      const counterText = document.getElementById("gameCounterText");
+      const progressFill = document.getElementById("gameProgressFill");
+      const percentText = document.getElementById("gamePercentText");
+      const remainingText = document.getElementById("gameRemainingText");
+      const currentQuestionBannerTitle = document.getElementById("currentQuestionBannerTitle");
+
+      if (counterText) counterText.textContent = `${count} / 10`;
+      if (progressFill) progressFill.style.width = `${count * 10}%`;
+      if (percentText) {
+        percentText.innerHTML = `
+          <span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+          ${count * 10}% completado
+        `;
+      }
+      if (remainingText) {
+        const remaining = 10 - count;
+        remainingText.textContent = remaining === 0 ? "¡Todos descubiertos!" : `Faltan ${remaining} regalo${remaining > 1 ? 's' : ''}`;
+      }
+      if (currentQuestionBannerTitle) {
+        const qNum = Math.min(gameState.currentQuestionIndex + 1, 10);
+        currentQuestionBannerTitle.textContent = count === 10 ? "¡Aventura completada! ❤️" : `Pregunta ${qNum} / 10 activa`;
+      }
+    }
+
+    // Clic en regalo bloqueado
+    function handleLockedGiftClick(giftId) {
+      const card = document.getElementById(`gift-card-${giftId}`);
+      if (card) {
+        card.classList.remove('shake-card');
+        void card.offsetWidth;
+        card.classList.add('shake-card');
+      }
+      showRomanticToast("¡Este cofre está sellado con amor! Responde una pregunta para desbloquearlo 🔐");
+    }
+
+    /* ==========================================================================
+       MODAL DE PREGUNTA ACTIVA Y LÓGICA DE RESPUESTA
+       ========================================================================== */
+    function openQuestionModal() {
+      if (gameState.currentQuestionIndex >= 10 || gameState.unlockedGiftIds.length === 10) {
+        // Ya se respondieron las 10 preguntas
+        transitionScreen("screen-game", "screen-final");
+        return;
+      }
+
+      const question = gameState.shuffledQuestions[gameState.currentQuestionIndex];
+      if (!question) return;
+
+      const modal = document.getElementById("questionModal");
+      const badge = document.getElementById("modalQuestionBadge");
+      const title = document.getElementById("modalQuestionTitle");
+      const hint = document.getElementById("modalQuestionHint");
+      const optionsContainer = document.getElementById("modalOptionsContainer");
+      const feedbackBox = document.getElementById("modalFeedbackBox");
+      const actionButtons = document.getElementById("modalActionButtons");
+
+      badge.textContent = `Pregunta ${gameState.currentQuestionIndex + 1} / 10`;
+      title.textContent = question.question;
+      hint.textContent = question.hint || "Pista: Recuerda con el corazón...";
+
+      feedbackBox.className = "hidden";
+      feedbackBox.innerHTML = "";
+      actionButtons.className = "hidden";
+
+      // Letras de opciones A, B, C, D
+      const letterKeys = ["A", "B", "C", "D"];
+
+      optionsContainer.innerHTML = question.options.map((opt, idx) => `
+        <button onclick="handleOptionSelect(${idx})" 
+                id="q-opt-btn-${idx}"
+                class="w-full text-left p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between text-on-surface text-xs sm:text-sm font-medium group cursor-pointer border border-transparent hover:border-secondary-container">
+          <span class="flex items-center gap-2.5">
+            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-surface-container-lowest flex items-center justify-center font-bold text-on-surface-variant text-xs group-hover:text-primary transition-colors shrink-0 shadow-sm" id="q-opt-key-${idx}">
+              ${letterKeys[idx]}
+            </span>
+            <span class="leading-snug">${opt}</span>
+          </span>
+          <span class="material-symbols-outlined text-[18px] text-outline opacity-0 group-hover:opacity-100 transition-opacity" id="q-opt-icon-${idx}">
+            radio_button_unchecked
+          </span>
+        </button>
+      `).join('');
+
+      modal.classList.remove("hidden");
+    }
+
+    function closeQuestionModal() {
+      const modal = document.getElementById("questionModal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    // Selección de opción
+    function handleOptionSelect(selectedIndex) {
+      const question = gameState.shuffledQuestions[gameState.currentQuestionIndex];
+      const feedbackBox = document.getElementById("modalFeedbackBox");
+      const actionButtons = document.getElementById("modalActionButtons");
+      const selectedBtn = document.getElementById(`q-opt-btn-${selectedIndex}`);
+      const selectedIcon = document.getElementById(`q-opt-icon-${selectedIndex}`);
+      const selectedKey = document.getElementById(`q-opt-key-${selectedIndex}`);
+
+      if (selectedIndex === question.correctAnswer) {
+        // ==========================================
+        // ¡RESPUESTA CORRECTA!
+        // ==========================================
+        // Deshabilitar todos los botones de opciones
+        question.options.forEach((_, idx) => {
+          const btn = document.getElementById(`q-opt-btn-${idx}`);
+          if (btn) btn.disabled = true;
+        });
+
+        // Marcar opción ganadora
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl bg-secondary-container/80 border-2 border-primary text-on-secondary-fixed text-xs sm:text-sm font-bold flex items-center justify-between shadow-md";
+        }
+        if (selectedKey) {
+          selectedKey.className = "w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs shrink-0";
+        }
+        if (selectedIcon) {
+          selectedIcon.className = "material-symbols-outlined text-[20px] text-primary opacity-100";
+          selectedIcon.textContent = "check_circle";
+          selectedIcon.style.fontVariationSettings = "'FILL' 1";
+        }
+
+        // DESBLOQUEAR UNO DE LOS REGALOS ALEATORIAMENTE ENTRE LOS QUE AÚN ESTÁN BLOQUEADOS
+        const randomGiftIndex = Math.floor(Math.random() * gameState.lockedGiftIds.length);
+        const unlockedGiftId = gameState.lockedGiftIds.splice(randomGiftIndex, 1)[0];
+
+        gameState.unlockedGiftIds.push(unlockedGiftId);
+        const unlockedGiftObj = GIFTS.find(g => g.id === unlockedGiftId);
+
+        // Feedback positivo
+        feedbackBox.className = "rounded-xl p-3.5 sm:p-4 flex items-center gap-3 bg-secondary-fixed/50 border border-primary/20 text-on-surface animate-in fade-in";
+        feedbackBox.innerHTML = `
+          <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-md">
+            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">celebration</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-sm font-bold text-primary">¡Correcto, mi amor! ❤️</span>
+            <p class="text-xs text-on-surface-variant">
+              Has desbloqueado aleatoriamente el <strong class="text-primary font-bold">${unlockedGiftObj.name === "Mistery Box" ? "¡Mistery Box Dorado 🌟!" : unlockedGiftObj.label + " 🎁"}</strong>
+            </p>
+          </div>
+        `;
+
+        // Mostrar botón para continuar
+        actionButtons.className = "flex flex-col sm:flex-row items-center justify-end gap-2.5 pt-2 border-t border-secondary-container/30";
+
+        // Lluvia de corazones festiva
+        burstRomanticHearts(window.innerWidth / 2, window.innerHeight * 0.4, 35);
+
+        // Actualizar el tablero de juego en segundo plano
+        renderGameGiftsGrid();
+
+      } else {
+        // ==========================================
+        // RESPUESTA INCORRECTA
+        // ==========================================
+        // No desbloquear, no avanzar, permitir reintento
+        if (selectedBtn) {
+          selectedBtn.classList.remove('shake-card');
+          void selectedBtn.offsetWidth;
+          selectedBtn.classList.add('shake-card');
+        }
+
+        feedbackBox.className = "rounded-xl p-3 flex items-center gap-2.5 bg-rose-50 border border-rose-200 text-rose-800 animate-in fade-in";
+        feedbackBox.innerHTML = `
+          <span class="material-symbols-outlined text-[20px] text-rose-600 shrink-0">sentiment_dissatisfied</span>
+          <span class="text-xs sm:text-sm font-medium">Casi, mi amor 🥺 Inténtalo nuevamente.</span>
+        `;
+      }
+    }
+
+    // Continuar a la siguiente pregunta
+    function handleContinueToNextQuestion() {
+      gameState.currentQuestionIndex++;
+
+      closeQuestionModal();
+
+      if (gameState.currentQuestionIndex >= 10 || gameState.unlockedGiftIds.length === 10) {
+        // ¡10 PREGUNTAS Y 10 REGALOS COMPLETADOS!
+        setTimeout(() => {
+          transitionScreen("screen-game", "screen-final");
+          burstRomanticHearts(window.innerWidth / 2, window.innerHeight / 2, 70);
+          showRomanticToast("¡Felicidades mi vida! ¡Completaste todos tus regalos! 🎉❤️");
+        }, 400);
+      } else {
+        // Siguiente pregunta
+        setTimeout(() => {
+          openQuestionModal();
+        }, 500);
+      }
+    }
+
+    /* ==========================================================================
+       TOAST ROMÁNTICO FLOTANTE
+       ========================================================================== */
+    function showRomanticToast(message, icon = "favorite") {
+      const toast = document.getElementById("romanticToast");
+      const toastMessage = document.getElementById("toastMessage");
+      const toastIcon = document.getElementById("toastIcon");
+
+      if (!toast) return;
+
+      toastMessage.textContent = message;
+      toastIcon.textContent = icon;
+
+      toast.classList.remove("translate-y-24", "opacity-0", "pointer-events-none");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      setTimeout(() => {
+        toast.classList.remove("translate-y-0", "opacity-100");
+        toast.classList.add("translate-y-24", "opacity-0", "pointer-events-none");
+      }, 3500);
+    }
+
+    function triggerWarmHugCelebration() {
+      burstRomanticHearts(window.innerWidth / 2, window.innerHeight * 0.7, 50);
+      showRomanticToast("¡Abrazo apretadito y lleno de besos enviado con éxito! 💕");
+    }
+
+     /* ==========================================================================
+       REPRODUCTOR DE MÚSICA
+       ========================================================================== */
+    const finalSongAudio = new Audio("velvet_rose_petals/songs/empire.mp3");
+
+     finalSongAudio.addEventListener("ended", () => updateAudioControlsUI(false));
+
+    function toggleFinalSong() {
+      if (finalSongAudio.paused) {
+        if (finalSongAudio.ended) finalSongAudio.currentTime = 0;
+        finalSongAudio.play()
+          .then(() => {
+            updateAudioControlsUI(true);
+            showRomanticToast("Tu música está sonando 🎵", "music_note");
+          })
+          .catch(error => console.error("No se pudo reproducir empire.mp3:", error));
+      } else {
+        finalSongAudio.pause();
+        updateAudioControlsUI(false);
+        showRomanticToast("Música en pausa", "volume_off");
+      }
+    }
+
+    function updateAudioControlsUI(playing) {
+      const finalIcon = document.getElementById("finalAudioBtnIcon");
+      const floatingIcon = document.getElementById("floatingMusicIcon");
+      const floatingLabel = document.getElementById("floatingMusicLabel");
+      const floatingEq = document.getElementById("floatingEqualizer");
+
+      if (finalIcon) finalIcon.textContent = playing ? "pause" : "play_arrow";
+      if (playing) {
+        if (floatingIcon) floatingIcon.textContent = "pause";
+        if (floatingLabel) floatingLabel.textContent = "Pausar Tu Música";
+        if (floatingEq) floatingEq.classList.remove("opacity-30");
+      } else {
+        if (floatingIcon) floatingIcon.textContent = "music_note";
+        if (floatingLabel) floatingLabel.textContent = "Tu Música";
+        if (floatingEq) floatingEq.classList.add("opacity-30");
+      }
+    }
+
+    /* ==========================================================================
+       CANVAS DE CORAZONES FLOTANTES Y CONFETI ROMÁNTICO
+       ========================================================================== */
+    let canvas, ctx;
+    let particles = [];
+
+    function initHeartsCanvas() {
+      canvas = document.getElementById("heartsCanvas");
+      if (!canvas) return;
+      ctx = canvas.getContext("2d");
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize);
+      resize();
+
+      // Corazones ambientales suaves de fondo
+      for (let i = 0; i < 18; i++) {
+        particles.push(createAmbientHeart());
+      }
+
+      animateCanvas();
+    }
+
+    function createAmbientHeart() {
+      return {
+        x: Math.random() * (canvas ? canvas.width : window.innerWidth),
+        y: Math.random() * (canvas ? canvas.height : window.innerHeight),
+        size: Math.random() * 12 + 8,
+        speedY: -(Math.random() * 0.6 + 0.3),
+        speedX: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.35 + 0.15,
+        color: ['#e11d48', '#b80035', '#fdd0ea', '#ffb3b6'][Math.floor(Math.random() * 4)],
+        type: 'ambient'
+      };
+    }
+
+    function burstRomanticHearts(originX, originY, amount = 30) {
+      if (!canvas) return;
+      for (let i = 0; i < amount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 7 + 2;
+        particles.push({
+          x: originX,
+          y: originY,
+          size: Math.random() * 14 + 10,
+          speedX: Math.cos(angle) * speed,
+          speedY: Math.sin(angle) * speed - 2,
+          gravity: 0.12,
+          opacity: 1,
+          color: ['#e11d48', '#b80035', '#f43f5e', '#fb7185', '#ffd8ed'][Math.floor(Math.random() * 5)],
+          type: 'burst'
+        });
+      }
+    }
+
+    function drawHeart(ctx, x, y, size, color, opacity) {
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      const topCurveHeight = size * 0.3;
+      ctx.moveTo(x, y + topCurveHeight);
+      ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+      ctx.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 1.2, x, y + size);
+      ctx.bezierCurveTo(x, y + (size + topCurveHeight) / 1.2, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+      ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function animateCanvas() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+
+        if (p.type === 'ambient') {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          if (p.y < -30) {
+            p.y = canvas.height + 20;
+            p.x = Math.random() * canvas.width;
+          }
+          drawHeart(ctx, p.x, p.y, p.size, p.color, p.opacity);
+        } else if (p.type === 'burst') {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.speedY += p.gravity;
+          p.opacity -= 0.015;
+
+          if (p.opacity <= 0) {
+            particles.splice(i, 1);
+          } else {
+            drawHeart(ctx, p.x, p.y, p.size, p.color, p.opacity);
+          }
+        }
+      }
+
+      requestAnimationFrame(animateCanvas);
+    }
+  </script>
+</body>
+
+</html>
